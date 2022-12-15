@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inPort: 6969
-  outIP: 192.168.0.38
+  outIP: 10.24.23.59
   outPort: 80
 --- !u!114 &2177815694725608596
 MonoBehaviour:
