@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/CRTKL_06_RadicalChange.unity
     guid: 96bcb2c114019f2418618cb14c9f74dc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CRTKL_12_Astoning.unity
     guid: 8463c325f60f4394c9299889d1b52364
+  - enabled: 1
+    path: Assets/Scenes/CRTKL_17.unity
+    guid: 1139bc091d416af45baaecac1e9c6cd7
   m_configObjects: {}
