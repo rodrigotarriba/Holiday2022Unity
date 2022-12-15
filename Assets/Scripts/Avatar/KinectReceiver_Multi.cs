@@ -30,6 +30,14 @@ public class KinectReceiver_Multi : MonoBehaviour
     [SerializeField] private Transform[] bigEmittersPool;
 
 
+    //AddReferenceTOOSC Parent
+    [SerializeField] Transform oSCParentBackup;
+    [SerializeField] Transform oSCParent;
+
+
+
+
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -74,7 +82,7 @@ public class KinectReceiver_Multi : MonoBehaviour
         Debug.Log("yes");
 
         switch (message.address)
-        {
+        { 
             case "/frame":
                 //LengthOfDataArrays = MaxNumberOfPlayers * NumberOfJointsTracked;
                 CurrentKinectMoving = (int)message.GetFloat(0);
@@ -83,7 +91,7 @@ public class KinectReceiver_Multi : MonoBehaviour
             case "/tx":
                 for (int i = 0; i < LengthOfDataArrays; i++)
                 {
-                    bigEmittersPool[i].position = new Vector3(message.GetFloat(i), bigEmittersPool[i].position.y, bigEmittersPool[i].position.z);
+                    bigEmittersPool[i].localPosition = new Vector3(message.GetFloat(i), bigEmittersPool[i].localPosition.y, bigEmittersPool[i].localPosition.z);
                     //allKinects[CurrentKinectMoving][i % MaxNumberOfPlayers][Mathf.FloorToInt(i / MaxNumberOfPlayers)][0] = message.GetFloat(i);
                 }
                 break;
@@ -91,7 +99,7 @@ public class KinectReceiver_Multi : MonoBehaviour
             case "/ty":
                 for (int i = 0; i < LengthOfDataArrays; i++)
                 {
-                    bigEmittersPool[i].position = new Vector3(bigEmittersPool[i].position.x, message.GetFloat(i), bigEmittersPool[i].position.z);
+                    bigEmittersPool[i].localPosition = new Vector3(bigEmittersPool[i].localPosition.x, message.GetFloat(i), bigEmittersPool[i].localPosition.z);
                     //allKinects[CurrentKinectMoving][i % MaxNumberOfPlayers][Mathf.FloorToInt(i / MaxNumberOfPlayers)][1] = message.GetFloat(i);
                 }
                 break;
@@ -99,7 +107,7 @@ public class KinectReceiver_Multi : MonoBehaviour
             case "/tz":
                 for (int i = 0; i < LengthOfDataArrays; i++)
                 {
-                    bigEmittersPool[i].position = new Vector3(bigEmittersPool[i].position.x, bigEmittersPool[i].position.y, message.GetFloat(i));
+                    bigEmittersPool[i].localPosition = new Vector3(bigEmittersPool[i].localPosition.x, bigEmittersPool[i].localPosition.y, message.GetFloat(i));
                     //allKinects[CurrentKinectMoving][i % MaxNumberOfPlayers][Mathf.FloorToInt(i / MaxNumberOfPlayers)][2] = message.GetFloat(i);
                 }
                 break;
@@ -111,6 +119,7 @@ public class KinectReceiver_Multi : MonoBehaviour
 
     public void LateUpdate()
     {
+
         //int index = 0;
         //Vector3 currentVector;
 
