@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inPort: 6969
-  outIP: 10.24.23.59
+  outIP: 172.20.10.2
   outPort: 80
 --- !u!114 &2177815694725608596
 MonoBehaviour:
@@ -227,6 +227,7 @@ MonoBehaviour:
   - {fileID: 9084555871273583886}
   - {fileID: 9084555870839713822}
   - {fileID: 9084555870127845951}
+  nodesAnimators: []
 --- !u!1 &7352958790695413210
 GameObject:
   m_ObjectHideFlags: 0

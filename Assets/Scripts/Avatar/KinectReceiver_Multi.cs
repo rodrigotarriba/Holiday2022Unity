@@ -31,7 +31,7 @@ public class KinectReceiver_Multi : MonoBehaviour
 
 
     //Import node animator
-    [SerializeField] Animator node_01Animator;
+    [SerializeField] Animator[] nodesAnimators;
 
 
 
@@ -77,30 +77,37 @@ public class KinectReceiver_Multi : MonoBehaviour
         //Test animations being triggered
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log(node_01Animator.playbackTime);
-            //This effectively plays it from 0 every time is triggered, when not identified as a loop
-            node_01Animator.Play("S1_Node_1_0", -1, 0f);
-
-        }
-
-        //Test animations being triggered
-        if (Input.GetKeyDown(KeyCode.A))
-        {
             //Debug.Log(node_01Animator.playbackTime);
             //This effectively plays it from 0 every time is triggered, when not identified as a loop
-            node_01Animator.Play("S1_Node_1_1", -1, 0f);
+            nodesAnimators[4].SetTrigger("Restart");
+            nodesAnimators[5].SetTrigger("Restart");
 
         }
+
     }
 
 
 
     public void OnReceiveOSCJoints(OscMessage message)
     {
-        Debug.Log("yes");
+
 
         switch (message.address)
-        { 
+        {
+            case "/audio":
+                if (message.GetFloat(0) > 0)
+                {
+                    nodesAnimators[4].SetTrigger("Restart");
+                    nodesAnimators[5].SetTrigger("Restart");
+                    nodesAnimators[6].SetTrigger("Restart");
+                    nodesAnimators[7].SetTrigger("Restart");
+                    nodesAnimators[1].SetTrigger("Restart");
+                    nodesAnimators[2].SetTrigger("Restart");
+                    nodesAnimators[3].SetTrigger("Restart");
+                }
+                
+                break;
+
             case "/frame":
                 CurrentKinectMoving = (int)message.GetFloat(0);
                 break;
