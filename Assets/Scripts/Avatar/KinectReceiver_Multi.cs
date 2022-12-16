@@ -30,11 +30,8 @@ public class KinectReceiver_Multi : MonoBehaviour
     [SerializeField] private Transform[] bigEmittersPool;
 
 
-    //AddReferenceTOOSC Parent
-    [SerializeField] Transform oSCParentBackup;
-    [SerializeField] Transform oSCParent;
-
-
+    //Import node animator
+    [SerializeField] Animator node_01Animator;
 
 
 
@@ -75,6 +72,27 @@ public class KinectReceiver_Multi : MonoBehaviour
         LengthOfDataArrays = 64;
     }
 
+    public void Update()
+    {
+        //Test animations being triggered
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log(node_01Animator.playbackTime);
+            //This effectively plays it from 0 every time is triggered, when not identified as a loop
+            node_01Animator.Play("S1_Node_1_0", -1, 0f);
+
+        }
+
+        //Test animations being triggered
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            //Debug.Log(node_01Animator.playbackTime);
+            //This effectively plays it from 0 every time is triggered, when not identified as a loop
+            node_01Animator.Play("S1_Node_1_1", -1, 0f);
+
+        }
+    }
+
 
 
     public void OnReceiveOSCJoints(OscMessage message)
@@ -84,7 +102,6 @@ public class KinectReceiver_Multi : MonoBehaviour
         switch (message.address)
         { 
             case "/frame":
-                //LengthOfDataArrays = MaxNumberOfPlayers * NumberOfJointsTracked;
                 CurrentKinectMoving = (int)message.GetFloat(0);
                 break;
 
@@ -120,22 +137,7 @@ public class KinectReceiver_Multi : MonoBehaviour
     public void LateUpdate()
     {
 
-        //int index = 0;
-        //Vector3 currentVector;
 
-        //for (int a = 0; a < MaxNumberOfPlayers; a++)
-        //{
-        //    for (int b = 0; b < NumberOfJointsTracked; b++)
-        //    {
-        //        currentVector = new Vector3(
-        //               allKinects[CurrentKinectMoving][a][b][0],
-        //               allKinects[CurrentKinectMoving][a][b][1],
-        //               allKinects[CurrentKinectMoving][a][b][2]
-        //               );
-        //        bigEmittersPool[index].position = currentVector;
-        //        index++;
-        //    }
-         //   }
     }
 
 }
