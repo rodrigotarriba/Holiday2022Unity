@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daebc70828e501444b23046e124e96f4, type: 3}
   m_Name: Spiral Rule
   m_EditorClassIdentifier: 
-  _useSplinePercent: 0
-  _revolve: 1080
-  _startSize: {x: 2, y: 2}
-  _endSize: {x: 2, y: 2}
-  _offset: 0
+  _useSplinePercent: 1
+  _revolve: 6.42
+  _startSize: {x: 10, y: 2}
+  _endSize: {x: 78.29, y: 2}
+  _offset: 0.423
